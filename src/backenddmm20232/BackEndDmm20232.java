@@ -10,6 +10,7 @@ import backenddmm20232.views.ManterMusica;
 import backenddmm20232.views.ManterPlaylist;
 import backenddmm20232.views.ManterSistema;
 import backenddmm20232.views.ManterUsuario;
+import backenddmm20232.views.ManterUsuariosSistemas;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
  
@@ -32,7 +33,7 @@ public class BackEndDmm20232 {
     }
 
     public static void menu() throws SQLException, ClassNotFoundException {
-        String msg = " 0 - Sair \n 1 - Usuario \n 2 - Sistema \n 3 - Musica \n 4 - Playlist \n 5 - Gêneros Musicais \n 6 - Comentário \n 7 - ControleAcesso ";
+        String msg = " 0 - Sair \n 1 - Usuario \n 2 - Sistema \n 3 - Musica \n 4 - Playlist \n 5 - Gêneros Musicais \n 6 - Comentário \n 7 - UsuáriosSistemas ";
 
         int num = Integer.parseInt(JOptionPane.showInputDialog(msg));
         
@@ -49,13 +50,18 @@ public class BackEndDmm20232 {
                 break;
             case 3:
                 ManterMusica.menu();
+                break;
             case 4:
                 ManterPlaylist.menu();
+                break;
             case 5:
                 ManterGeneroMusical.menu();
+                break;
             case 6:
                 ManterComentario.menu();
-            case 7: 
+                break;
+            case 7:
+                ManterUsuariosSistemas.menu();
                 break;
             default:
                 System.out.println("Opção inválido");

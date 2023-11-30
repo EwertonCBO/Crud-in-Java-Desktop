@@ -6,7 +6,7 @@ package backenddmm20232.models.beans;
 
 /**
  *
- * @author Aluno
+ * @author math
  */
 public class Playlist {
     private int id, numero_faixas ;
