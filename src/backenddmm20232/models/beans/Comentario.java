@@ -9,8 +9,32 @@ package backenddmm20232.models.beans;
  * @author Ewerton CBO
  */
 public class Comentario {
-    private int id, idAutor, idPost, avaliacao;
+    private int id, idAutor,  avaliacao;
     private String descricao, data;
+    private Usuario usu;
+
+    public Comentario(int id) {
+        this.id = id;
+    }
+
+    public Comentario(String data) {
+        this.data = data;
+    }
+
+    public Comentario(int id, int idAutor, int avaliacao, String descricao, String data) {
+        this.id = id;
+        this.idAutor = idAutor;
+        this.avaliacao = avaliacao;
+        this.descricao = descricao;
+        this.data = data;
+    }
+
+    public Comentario(int idAutor, int avaliacao, String descricao, String data) {
+        this.idAutor = idAutor;
+        this.avaliacao = avaliacao;
+        this.descricao = descricao;
+        this.data = data;
+    }
 
     public int getId() {
         return id;
@@ -26,14 +50,6 @@ public class Comentario {
 
     public void setIdAutor(int idAutor) {
         this.idAutor = idAutor;
-    }
-
-    public int getIdPost() {
-        return idPost;
-    }
-
-    public void setIdPost(int idPost) {
-        this.idPost = idPost;
     }
 
     public int getAvaliacao() {
@@ -60,38 +76,24 @@ public class Comentario {
         this.data = data;
     }
 
-    public Comentario(int id, int idAutor, int idPost, int avaliacao, String descricao, String data) {
-        this.id = id;
-        this.idAutor = idAutor;
-        this.idPost = idPost;
-        this.avaliacao = avaliacao;
-        this.descricao = descricao;
-        this.data = data;
-    }
-    
-
-    public Comentario(int id) {
-        this.id = id;
+    public Usuario getUsu() {
+        return usu;
     }
 
-    public Comentario(int idAutor, int idPost, int avaliacao, String descricao, String data) {
-        this.idAutor = idAutor;
-        this.idPost = idPost;
-        this.avaliacao = avaliacao;
-        this.descricao = descricao;
-        this.data = data;
-    }
-
-    public Comentario(String data) {
-        this.data = data;
+    public void setUsu(Usuario usu) {
+        this.usu = usu;
     }
 
     @Override
     public String toString() {
-        return "Comentario{" + "id=" + id + ", idAutor=" + idAutor + ", idPost=" + idPost + ", avaliacao=" + avaliacao + ", descricao=" + descricao + ", data=" + data + '}';
+        return "Comentario{" + "id=" + id + ", idAutor=" + idAutor + ", avaliacao=" + avaliacao + ", descricao=" + descricao + ", data=" + data + ", usu=" + usu + '}';
     }
 
-   
+    
+    
+    
+    
+    
     
     
     

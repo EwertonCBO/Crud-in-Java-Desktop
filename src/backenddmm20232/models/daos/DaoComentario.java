@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,9 +54,8 @@ private final Connection c;
                     rs.getInt(1),
                     rs.getInt(2),
                     rs.getInt(3),
-                    rs.getInt(4),
-                    rs.getString(5),
-                    rs.getString(6));
+                    rs.getString(4),
+                    rs.getString(5));
                     
             // adiciona o mus à lista de coments
             }
@@ -64,17 +64,16 @@ private final Connection c;
    }
 
     public Comentario inserir(Comentario comentEnt) throws SQLException{
-        String sql = "insert into comentarios" + " ( id_autor, id_post, avaliacao, descricao, data)" + " values (?,?,?,?,?)";
+        String sql = "insert into comentarios" + " ( id_autor, avaliacao, descricao, data)" + " values (?,?,?,?)";
     
         // prepared statement para inserção
         PreparedStatement stmt = c.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 
         // seta os valores
         stmt.setInt (1,comentEnt.getIdAutor());
-        stmt.setInt (2,comentEnt.getIdPost());
-        stmt.setInt (3,comentEnt.getAvaliacao());
-        stmt.setString(4,comentEnt.getDescricao());
-        stmt.setString(5,comentEnt.getData());
+        stmt.setInt (2,comentEnt.getAvaliacao());
+        stmt.setString(3,comentEnt.getDescricao());
+        stmt.setString(4,comentEnt.getData());
        
         
 
@@ -90,16 +89,15 @@ private final Connection c;
     }
 
     public Comentario alterar(Comentario comentEnt) throws SQLException{
-        String sql = "UPDATE comentarios SET id_autor = ?, id_post = ?, avaliacao = ?, descricao = ?, data = ? WHERE id = ?";
+        String sql = "UPDATE comentarios SET id_autor = ?, avaliacao = ?, descricao = ?, data = ? WHERE id = ?";
         // prepared statement para inserção
         PreparedStatement stmt = c.prepareStatement(sql);
         // seta os valores
         stmt.setInt (1,comentEnt.getIdAutor());
-        stmt.setInt (2,comentEnt.getIdPost());
-        stmt.setInt (3,comentEnt.getAvaliacao());
-        stmt.setString(4,comentEnt.getDescricao());
-        stmt.setString(5,comentEnt.getData());
-        stmt.setInt(6,comentEnt.getId());
+        stmt.setInt (2,comentEnt.getAvaliacao());
+        stmt.setString(3,comentEnt.getDescricao());
+        stmt.setString(4,comentEnt.getData());
+        stmt.setInt(5,comentEnt.getId());
 
         // executa
         stmt.execute();
@@ -126,9 +124,8 @@ private final Connection c;
                     rs.getInt(1),
                     rs.getInt(2),
                     rs.getInt(3),
-                    rs.getInt(4),
-                    rs.getString(5),
-                    rs.getString(6));
+                    rs.getString(4),
+                    rs.getString(5));
             
             // adiciona o mus à lista de coments
             coments.add(coment);

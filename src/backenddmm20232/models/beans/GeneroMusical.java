@@ -11,7 +11,7 @@ package backenddmm20232.models.beans;
 public class GeneroMusical {
     private int id;
     private String nome;
-
+    
     public int getId() {
         return id;
     }

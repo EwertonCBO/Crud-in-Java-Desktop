@@ -4,9 +4,12 @@
  */
 package backenddmm20232.controllers;
 
+
+import backenddmm20232.models.beans.Usuario;
 import backenddmm20232.models.beans.Comentario;
 import backenddmm20232.models.daos.DaoComentario;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,9 +32,15 @@ public class ControllerComentario {
         return daoComent.alterar(ComentEnt);
     }
 
-    public Comentario buscar(Comentario ComentEnt) throws SQLException, ClassNotFoundException {
+    public Comentario buscar(Comentario coment) throws SQLException, ClassNotFoundException {
         daoComent = new DaoComentario();
-        return daoComent.buscar(ComentEnt);
+        Comentario comentSaida = daoComent.buscar(coment);
+        
+        ControllerUsuario contUsu = new ControllerUsuario();
+        Usuario usuEnt = new Usuario(comentSaida.getIdAutor());
+        comentSaida.setUsu(contUsu.buscar(usuEnt));
+        
+        return comentSaida;
     }
 
     public Comentario excluir(Comentario ComentEnt) throws SQLException, ClassNotFoundException {
@@ -41,7 +50,14 @@ public class ControllerComentario {
 
     public List<Comentario> listar(Comentario ComentEnt) throws SQLException, ClassNotFoundException {
         daoComent = new DaoComentario();
-        return daoComent.listar(ComentEnt);
+        List<Comentario> listaComentarioAux = daoComent.listar(ComentEnt);
+        List<Comentario> listaComentarioSaida = new ArrayList<>();
+        
+        for (Comentario comentSaida : listaComentarioAux) {
+            listaComentarioSaida.add(buscar(comentSaida));
+        }
+        
+        return listaComentarioSaida;
     }
     
 }

@@ -46,11 +46,10 @@ public class ManterComentario {
         
         
         int idAutor = Integer.parseInt(JOptionPane.showInputDialog("idAutor"));
-        int idPost = Integer.parseInt(JOptionPane.showInputDialog("idPost"));
         int avaliacao = Integer.parseInt(JOptionPane.showInputDialog("avaliacao"));
         String descricao = JOptionPane.showInputDialog("descricao");
         String data = JOptionPane.showInputDialog("data");
-        Comentario comentEnt = new Comentario (idAutor,idPost,avaliacao,descricao,data); 
+        Comentario comentEnt = new Comentario (idAutor,avaliacao,descricao,data); 
         ControllerComentario contComent = new ControllerComentario();
         Comentario ComentSaida = contComent.inserir(comentEnt);
         JOptionPane.showMessageDialog(null,ComentSaida.toString());
@@ -59,11 +58,10 @@ public class ManterComentario {
     private static void alterar() throws SQLException, ClassNotFoundException {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
         int idAutor = Integer.parseInt(JOptionPane.showInputDialog("idAutor"));
-        int idPost = Integer.parseInt(JOptionPane.showInputDialog("idPost"));
         int avaliacao = Integer.parseInt(JOptionPane.showInputDialog("avaliacao"));
         String descricao = JOptionPane.showInputDialog("descricao");
         String data = JOptionPane.showInputDialog("data");
-        Comentario ComentEnt = new Comentario(id, idAutor, idPost, avaliacao, descricao, data);
+        Comentario ComentEnt = new Comentario(id, idAutor, avaliacao, descricao, data);
         ControllerComentario contComent = new ControllerComentario();
         Comentario ComentSaida = contComent.alterar(ComentEnt);
         JOptionPane.showMessageDialog(null,ComentSaida.toString());
